@@ -126,6 +126,8 @@ module Dummer
               rand.float(opts)
             when :datetime
               rand.datetime(opts)
+            when :faker
+              rand.faker(opts)
             else
               raise ConfigError.new("type: `#{type}` is not defined.")
             end
@@ -235,6 +237,11 @@ module Dummer
       else
         Proc.new { Time.now.strftime(format) }
       end
+    end
+
+    def faker(opts = {})
+      require "ffaker"
+      Proc.new { Faker.const_get(opts[:module].capitalize).send(opts[:method]) }
     end
   end
 end

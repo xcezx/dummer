@@ -21,6 +21,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "thor"
   spec.add_dependency "serverengine"
   spec.add_dependency "fluent-logger"
+  spec.add_dependency "ffaker"
 
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
